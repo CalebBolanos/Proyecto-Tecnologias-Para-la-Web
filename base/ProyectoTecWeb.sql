@@ -139,6 +139,25 @@ insert into EscuelaIPN (NombreEscuela) values("CECyT 18 - Zacatecas");
 insert into EscuelaIPN (NombreEscuela) values("CECyT 19 Leona Vicario");
 insert into EscuelaIPN (NombreEscuela) values("CET 1 Walter Cross Buchanan");
 
+insert into Alcaldia (NombreAlcaldia) values("Álvaro Obregón");
+insert into Alcaldia (NombreAlcaldia) values("Azcapotzalco");
+insert into Alcaldia (NombreAlcaldia) values("Benito Juárez");
+insert into Alcaldia (NombreAlcaldia) values("Coyoacán");
+insert into Alcaldia (NombreAlcaldia) values("Cuajimalpa");
+insert into Alcaldia (NombreAlcaldia) values("Cuauhtémoc");
+insert into Alcaldia (NombreAlcaldia) values("Gustavo A. Madero");
+insert into Alcaldia (NombreAlcaldia) values("Iztacalco");
+insert into Alcaldia (NombreAlcaldia) values("Iztapalapa");
+insert into Alcaldia (NombreAlcaldia) values("La Magdalena Contreras");
+insert into Alcaldia (NombreAlcaldia) values("Miguel Hidalgo");
+insert into Alcaldia (NombreAlcaldia) values("Milpa Alta");
+insert into Alcaldia (NombreAlcaldia) values("Tláhuac");
+insert into Alcaldia (NombreAlcaldia) values("Tlalpan");
+insert into Alcaldia (NombreAlcaldia) values("Venustiano Carranza");
+insert into Alcaldia (NombreAlcaldia) values("Xochimilco");
+
+
 
 select * from EntidadFederal;
 select * from EscuelaIPN;
+select * from Alcaldia;
