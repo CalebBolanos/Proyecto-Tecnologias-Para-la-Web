@@ -53,7 +53,7 @@ CREATE TABLE Alcaldia
 CREATE TABLE Alumno
 (
   idAlumno INT AUTO_INCREMENT,
-  Boleta INT NOT NULL,
+  Boleta varchar(10) NOT NULL,
   NombreAlumno varchar(50) not null,
   ApellidoPaterno varchar(50) NOT NULL,
   ApellidoMaterno varchar(50) NOT NULL,
@@ -65,9 +65,9 @@ CREATE TABLE Alumno
   CP INT NOT NULL,
   Telefono INT NOT NULL,
   Correo varchar(50) NOT NULL,
-  Promedio float(50) NOT NULL,
-  EscuelaProcedencia varchar(50) NOT NULL,
-  Alcaldia varchar(50) NOT NULL,
+  Promedio float(10) NOT NULL,
+  EscuelaProcedencia varchar(500) NOT NULL,
+  Alcaldia varchar(500) NOT NULL,
   OpcionEscom INT NOT NULL,
   idHorario INT NOT NULL,
   PRIMARY KEY (idAlumno),
