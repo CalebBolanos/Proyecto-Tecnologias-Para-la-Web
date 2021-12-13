@@ -17,7 +17,8 @@ CREATE TABLE Laboratorio
 CREATE TABLE Horario
 (
   idHorario INT AUTO_INCREMENT,
-  Hora TIME NOT NULL,
+  HoraInicio TIME NOT NULL,
+  HoraFin TIME NOT NULL,
   Dia DATE NOT NULL,
   totalLugares INT NOT NULL,
   Disponibles INT NOT NULL,
@@ -78,7 +79,7 @@ CREATE TABLE Alumno
 
 show tables;
 insert into Laboratorio(NombreLab, Edificio, Piso) values("4B", "terceredi", "5to piso");
-insert into Horario(Hora, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:30","2021-12-12", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:30", "8:45","2021-12-12", 25, 25, 0, 1);
 
 select * from Laboratorio;
 select * from Horario;
