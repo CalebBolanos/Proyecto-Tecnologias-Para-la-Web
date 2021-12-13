@@ -9,8 +9,7 @@ CREATE TABLE Horario
 (
   idHorario INT AUTO_INCREMENT,
   Hora TIME NOT NULL,
-  Día DATE NOT NULL,
-  Disponibilidad INT NOT NULL,
+  Dia DATE NOT NULL,
   totalLugares INT NOT NULL,
   Disponibles INT NOT NULL,
   Ocupados INT NOT NULL,
@@ -61,19 +60,19 @@ CREATE TABLE Alumno
   idAlumno INT AUTO_INCREMENT,
   Boleta INT NOT NULL,
   NombreAlumno varchar(50) not null,
-  ApellidoPaterno INT NOT NULL,
-  ApellidoMaterno INT NOT NULL,
-  FechaNacimiento INT NOT NULL,
-  Genero INT NOT NULL,
-  CURP INT NOT NULL,
-  Calle INT NOT NULL,
-  Colonia INT NOT NULL,
+  ApellidoPaterno varchar(50) NOT NULL,
+  ApellidoMaterno varchar(50) NOT NULL,
+  FechaNacimiento DATE NOT NULL,
+  Genero varchar(50) NOT NULL,
+  CURP varchar(100) NOT NULL,
+  Calle nvarchar(500) NOT NULL,
+  Colonia nvarchar(500) NOT NULL,
   CP INT NOT NULL,
   Telefono INT NOT NULL,
-  Correo INT NOT NULL,
-  Promedio INT NOT NULL,
-  EscuelaProcedencia INT NOT NULL,
-  Alcaldia INT NOT NULL,
+  Correo varchar(50) NOT NULL,
+  Promedio float(50) NOT NULL,
+  EscuelaProcedencia varchar(50) NOT NULL,
+  Alcaldia varchar(50) NOT NULL,
   OpcionEscom INT NOT NULL,
   idHorario INT NOT NULL,
   PRIMARY KEY (idAlumno),
@@ -84,3 +83,7 @@ CREATE TABLE Alumno
 );
 
 show tables;
+
+insert into Horario(Hora, Dia, totalLugares, Disponibles, Ocupados) values ("7:30","2021-12-12", 25, 25, 0);
+
+select * from Horario;
