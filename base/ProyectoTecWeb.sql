@@ -83,3 +83,62 @@ insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupado
 
 select * from Laboratorio;
 select * from Horario;
+
+insert into EntidadFederal (NombreEstado) values("Aguas calientes");
+insert into EntidadFederal (NombreEstado) values("Baja California");
+insert into EntidadFederal (NombreEstado) values("Baja California Sur");
+insert into EntidadFederal (NombreEstado) values("Campeche");
+insert into EntidadFederal (NombreEstado) values("Chiapas");
+insert into EntidadFederal (NombreEstado) values("Chihuahua");
+insert into EntidadFederal (NombreEstado) values("Coahuila de Zaragoza");
+insert into EntidadFederal (NombreEstado) values("Colima");
+insert into EntidadFederal (NombreEstado) values("Durango");
+insert into EntidadFederal (NombreEstado) values("Guanajuato");
+insert into EntidadFederal (NombreEstado) values("Guerrero");
+insert into EntidadFederal (NombreEstado) values("Hidalgo");
+insert into EntidadFederal (NombreEstado) values("Jalisco");
+insert into EntidadFederal (NombreEstado) values("Estado de México");
+insert into EntidadFederal (NombreEstado) values("Michoacán de Ocampo");
+insert into EntidadFederal (NombreEstado) values("Morelos");
+insert into EntidadFederal (NombreEstado) values("Nayarit");
+insert into EntidadFederal (NombreEstado) values("Nuevo León");
+insert into EntidadFederal (NombreEstado) values("Oaxaca");
+insert into EntidadFederal (NombreEstado) values("Puebla");
+insert into EntidadFederal (NombreEstado) values("Querétaro");
+insert into EntidadFederal (NombreEstado) values("Quintana Roo");
+insert into EntidadFederal (NombreEstado) values("San Luis Potosí");
+insert into EntidadFederal (NombreEstado) values("Sinaloa");
+insert into EntidadFederal (NombreEstado) values("Sonora");
+insert into EntidadFederal (NombreEstado) values("Tabasco");
+insert into EntidadFederal (NombreEstado) values("Tamaulipas");
+insert into EntidadFederal (NombreEstado) values("Tlaxcala");
+insert into EntidadFederal (NombreEstado) values("Veracruz");
+insert into EntidadFederal (NombreEstado) values("Yucatán");
+insert into EntidadFederal (NombreEstado) values("Zacatecas");
+insert into EntidadFederal (NombreEstado) values("Ciudad de México");
+
+
+insert into EscuelaIPN (NombreEscuela) values("CECyT 1 Gonzalo Vázquez Vela");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 2 Miguel Bernard Perales");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 3 Estanislao Ramírez Ruiz");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 4 Lázaro Cárdenas del Río");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 5 Benito Juárez");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 6 Miguel Othon de Mendizábal");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 7 Cuauhtémoc");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 8 Narciso Bassols");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 9 Juan de Dios Bátiz Paredes");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 10 Carlos Vallejo Márquez");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 11 Wilfrido Massieu");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 12 José María Morelos");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 13 Ricardo Flores Magón");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 14 Luis Enrique Erro Soler");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 15 Diódoro Antúnez Echegaray");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 16 Hidalgo");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 17 León - Guanajuato");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 18 - Zacatecas");
+insert into EscuelaIPN (NombreEscuela) values("CECyT 19 Leona Vicario");
+insert into EscuelaIPN (NombreEscuela) values("CET 1 Walter Cross Buchanan");
+
+
+select * from EntidadFederal;
+select * from EscuelaIPN;
