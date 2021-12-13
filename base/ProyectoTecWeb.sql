@@ -5,17 +5,6 @@ create database examenweb;					   -- Comando para crear una base de datos
 use examenweb;
 
 /*===============================================Tablas===========================================================================*/
-CREATE TABLE Horario
-(
-  idHorario INT AUTO_INCREMENT,
-  Hora TIME NOT NULL,
-  Dia DATE NOT NULL,
-  totalLugares INT NOT NULL,
-  Disponibles INT NOT NULL,
-  Ocupados INT NOT NULL,
-  PRIMARY KEY (idHorario)
-);
-
 CREATE TABLE Laboratorio
 (
   idLab INT AUTO_INCREMENT,
@@ -24,6 +13,20 @@ CREATE TABLE Laboratorio
   Piso varchar(50) NOT NULL,
   PRIMARY KEY (idLab)
 );
+
+CREATE TABLE Horario
+(
+  idHorario INT AUTO_INCREMENT,
+  Hora TIME NOT NULL,
+  Dia DATE NOT NULL,
+  totalLugares INT NOT NULL,
+  Disponibles INT NOT NULL,
+  Ocupados INT NOT NULL,
+  idLab INT NOT NULL,
+  PRIMARY KEY (idHorario),
+  FOREIGN KEY (idLab) REFERENCES Laboratorio(idLab)
+);
+
 
 CREATE TABLE EntidadFederal
 (
@@ -44,15 +47,6 @@ CREATE TABLE Alcaldia
   idAlcaldia INT AUTO_INCREMENT,
   NombreAlcaldia varchar(50) NOT NULL,
   PRIMARY KEY (idAlcaldia)
-);
-
-CREATE TABLE Cuenta
-(
-  idHorario INT NOT NULL,
-  idLab INT NOT NULL,
-  PRIMARY KEY (idHorario, idLab),
-  FOREIGN KEY (idHorario) REFERENCES Horario(idHorario),
-  FOREIGN KEY (idLab) REFERENCES Laboratorio(idLab)
 );
 
 CREATE TABLE Alumno
@@ -83,7 +77,8 @@ CREATE TABLE Alumno
 );
 
 show tables;
+insert into Laboratorio(NombreLab, Edificio, Piso) values("4B", "terceredi", "5to piso");
+insert into Horario(Hora, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:30","2021-12-12", 25, 25, 0, 1);
 
-insert into Horario(Hora, Dia, totalLugares, Disponibles, Ocupados) values ("7:30","2021-12-12", 25, 25, 0);
-
+select * from Laboratorio;
 select * from Horario;
