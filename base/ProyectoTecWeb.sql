@@ -72,7 +72,7 @@ CREATE TABLE Alumno
   Calle nvarchar(500) NOT NULL,
   Colonia nvarchar(500) NOT NULL,
   CP INT NOT NULL,
-  Telefono int NOT NULL,
+  Telefono varchar(10) NOT NULL,
   Correo varchar(50) NOT NULL,
   Promedio float(10) NOT NULL,
   EscuelaProcedencia varchar(500) NOT NULL,
@@ -160,11 +160,110 @@ insert into Alcaldia (NombreAlcaldia) values("Tlalpan");
 insert into Alcaldia (NombreAlcaldia) values("Venustiano Carranza");
 insert into Alcaldia (NombreAlcaldia) values("Xochimilco");
 
-insert into Laboratorio(NombreLab, Edificio, Piso) values("4B", "terceredi", "5to piso");
-insert into Laboratorio(NombreLab, Edificio, Piso) values("5B", "2edi", "4to piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("Laboratorio de Computo 1", "Edificio 1", "Primer piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("Laboratorio de Computo 2", "Edificio 1", "Segundo piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("Laboratorio de Computo 3", "Edificio 2", "Primer piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("Laboratorio de Computo 4", "Edificio 2", "Segundo piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("Laboratorio de Computo 5", "Edificio 3", "Primer piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("Laboratorio de Computo 6", "Edificio 3", "Segundo piso");
 
-insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:45","2021-12-12", 25, 0, 0, 1);
-insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("9:00", "10:45","2021-12-12", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-21", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-21", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-21", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-21", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-21", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-21", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:30","2021-12-22", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("8:45", "10:15","2021-12-22", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-22", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-22", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("14:00", "15:30","2021-12-22", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("15:45", "17:15","2021-12-22", 25, 25, 0, 6);
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 2);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 3);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 4);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 5);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 6);
 
 select * from Laboratorio;
 select * from Horario;
@@ -176,7 +275,7 @@ delimiter |
 create procedure spGuardarAlumno(in bolet varchar(10), nalumno varchar(50), 
 	apate varchar(100), amate varchar(100), fech date, gen varchar(50), 
 	cur varchar(100), street nvarchar(500), col nvarchar(500), codigo int, 
-    tel int, mail varchar(50), prom float(10), skulproce varchar(500),
+    tel varchar(10), mail varchar(50), prom float(10), skulproce varchar(500),
     alcal varchar(500), opescom int)
 begin
 	declare dispo, numhorarios, hor, ocupa int;
@@ -209,9 +308,6 @@ begin
 end; |
 delimiter ;
 
-call spGuardarAlumno("2458f", "Prueba", "p", "m", "2001-10-10", "hombre", "dajeeif2",
-	"calle", "colonia", 55687, 52, "correo@correo.correo.correo", 
-    "12.2", "prepa", "alcaldia", 4);
     
 select * from Alumno;
 select * from Horario;
