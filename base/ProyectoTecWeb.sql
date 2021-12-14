@@ -50,6 +50,15 @@ CREATE TABLE Alcaldia
   PRIMARY KEY (idAlcaldia)
 );
 
+CREATE TABLE Administradores
+(
+  idAdmin INT AUTO_INCREMENT,
+  NombreAdmin varchar(50) NOT NULL,
+  CorreoAdmin varchar(50) NOT NULL,
+  ContraseñaAdmin varchar(50) NOT NULL,
+  PRIMARY KEY (idAdmin)
+);
+
 CREATE TABLE Alumno
 (
   idAlumno INT AUTO_INCREMENT,
@@ -63,7 +72,7 @@ CREATE TABLE Alumno
   Calle nvarchar(500) NOT NULL,
   Colonia nvarchar(500) NOT NULL,
   CP INT NOT NULL,
-  Telefono INT NOT NULL,
+  Telefono int NOT NULL,
   Correo varchar(50) NOT NULL,
   Promedio float(10) NOT NULL,
   EscuelaProcedencia varchar(500) NOT NULL,
@@ -77,12 +86,7 @@ CREATE TABLE Alumno
   UNIQUE (Boleta)
 );
 
-show tables;
-insert into Laboratorio(NombreLab, Edificio, Piso) values("4B", "terceredi", "5to piso");
-insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:30", "8:45","2021-12-12", 25, 25, 0, 1);
-
-select * from Laboratorio;
-select * from Horario;
+/*===============================================Insert===========================================================================*/
 
 insert into EntidadFederal (NombreEstado) values("Aguas calientes");
 insert into EntidadFederal (NombreEstado) values("Baja California");
@@ -156,8 +160,58 @@ insert into Alcaldia (NombreAlcaldia) values("Tlalpan");
 insert into Alcaldia (NombreAlcaldia) values("Venustiano Carranza");
 insert into Alcaldia (NombreAlcaldia) values("Xochimilco");
 
+insert into Laboratorio(NombreLab, Edificio, Piso) values("4B", "terceredi", "5to piso");
+insert into Laboratorio(NombreLab, Edificio, Piso) values("5B", "2edi", "4to piso");
+
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("7:00", "8:45","2021-12-12", 25, 0, 0, 1);
+insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("9:00", "10:45","2021-12-12", 25, 25, 0, 1);
+
+select * from Laboratorio;
+select * from Horario;
 
 
-select * from EntidadFederal;
-select * from EscuelaIPN;
-select * from Alcaldia;
+/*Procedimiento (Procedure) para guardar Alumnos*/
+drop procedure if exists spGuardarAlumno;
+delimiter |
+create procedure spGuardarAlumno(in bolet varchar(10), nalumno varchar(50), 
+	apate varchar(100), amate varchar(100), fech date, gen varchar(50), 
+	cur varchar(100), street nvarchar(500), col nvarchar(500), codigo int, 
+    tel int, mail varchar(50), prom float(10), skulproce varchar(500),
+    alcal varchar(500), opescom int)
+begin
+	declare dispo, numhorarios, hor, ocupa int;
+    declare msj nvarchar(200);
+    set hor = 1;
+    set numhorarios = (select count(*) from Horario);
+    
+    my_loop: LOOP
+    set dispo = (select Disponibles from Horario where idHorario = hor);
+    if(dispo > 0) then
+		insert into Alumno(Boleta, NombreAlumno, ApellidoPaterno, ApellidoMaterno,
+        FechaNacimiento, Genero, CURP, Calle, Colonia, CP, Telefono, Correo, 
+        Promedio, EscuelaProcedencia, Alcaldia, OpcionEscom, idHorario)
+        values (bolet, nalumno, apate, amate, fech, gen, cur, street, col,
+        codigo, tel, mail, prom, skulproce, alcal, opescom, hor);
+        
+        set ocupa = (select Ocupados from Horario where idHorario = hor);
+        set dispo = dispo - 1;
+        set ocupa = ocupa + 1;
+        
+        update Horario set Disponibles = dispo, Ocupados = ocupa where idHorario = hor; 
+        LEAVE my_loop;
+	else
+		if(hor < numhorarios) then
+			set hor = hor +1;
+		end if;
+	end if;
+    END LOOP my_loop;
+    
+end; |
+delimiter ;
+
+call spGuardarAlumno("2458f", "Prueba", "p", "m", "2001-10-10", "hombre", "dajeeif2",
+	"calle", "colonia", 55687, 52, "correo@correo.correo.correo", 
+    "12.2", "prepa", "alcaldia", 4);
+    
+select * from Alumno;
+select * from Horario;
