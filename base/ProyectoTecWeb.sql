@@ -187,7 +187,7 @@ insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupado
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 4);
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 5);
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("10:30", "12:00","2021-12-21", 25, 25, 0, 6);
-
+/*
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 1);
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 2);
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("12:15", "13:45","2021-12-21", 25, 25, 0, 3);
@@ -264,7 +264,7 @@ insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupado
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 4);
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 5);
 insert into Horario(HoraInicio, HoraFin, Dia, totalLugares, Disponibles, Ocupados, idLab) values ("17:30", "19:00","2021-12-22", 25, 25, 0, 6);
-
+*/
 select * from Laboratorio;
 select * from Horario;
 
@@ -308,6 +308,24 @@ begin
 end; |
 delimiter ;
 
+/*Procedimiento (Procedure) para el INICIO DE SESION*/
+drop procedure if exists spIniciarSesion;
+delimiter |
+create procedure spIniciarSesion(in usr varchar(50), contra nvarchar(50))
+begin
+	declare idUsr, existe int;
+    declare msj nvarchar(200);
     
-select * from Alumno;
-select * from Horario;
+    set existe = (select count(*) from Administradores where CorreoAdmin = usr and ContraseñaAdmin = contra);
+    if(existe = 1) then
+		select idAdmin into idUsr from Administradores where CorreoAdmin = usr;
+        set msj = "ok";
+    else
+		set msj = "Usuario o contraseña incorrecta";
+	end if;
+    select msj, idUsr;
+end; |
+delimiter ;
+
+insert into Administradores(NombreAdmin, CorreoAdmin, ContraseñaAdmin) values ("Caleb", "caleb@caleb.com", "si");
+call spIniciarSesion("caleb@caleb.co", "si");
