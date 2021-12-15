@@ -31,3 +31,7 @@ hr {
 #chkYes:checked~#dvtext {
     display: block;
 }
+
+.lineaDerecha {
+    border-right: 1px solid #dedfe0;
+}
