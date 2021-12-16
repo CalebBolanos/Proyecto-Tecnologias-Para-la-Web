@@ -278,33 +278,39 @@ create procedure spGuardarAlumno(in bolet varchar(10), nalumno varchar(50),
     tel varchar(10), mail varchar(50), prom float(10), skulproce varchar(500),
     alcal varchar(500), opescom int)
 begin
-	declare dispo, numhorarios, hor, ocupa int;
+	declare dispo, numhorarios, hor, ocupa, existe int;
     declare msj nvarchar(200);
     set hor = 1;
     set numhorarios = (select count(*) from Horario);
-    
-    my_loop: LOOP
-    set dispo = (select Disponibles from Horario where idHorario = hor);
-    if(dispo > 0) then
-		insert into Alumno(Boleta, NombreAlumno, ApellidoPaterno, ApellidoMaterno,
-        FechaNacimiento, Genero, CURP, Calle, Colonia, CP, Telefono, Correo, 
-        Promedio, EscuelaProcedencia, Alcaldia, OpcionEscom, idHorario)
-        values (bolet, nalumno, apate, amate, fech, gen, cur, street, col,
-        codigo, tel, mail, prom, skulproce, alcal, opescom, hor);
+    set existe = (select count(*) from Alumno where Boleta = bolet or Correo = mail or CURP = cur);
+
+    if(existe = 0) then
+		my_loop: LOOP
+		set dispo = (select Disponibles from Horario where idHorario = hor);
+		if(dispo > 0) then
+			insert into Alumno(Boleta, NombreAlumno, ApellidoPaterno, ApellidoMaterno,
+			FechaNacimiento, Genero, CURP, Calle, Colonia, CP, Telefono, Correo, 
+			Promedio, EscuelaProcedencia, Alcaldia, OpcionEscom, idHorario)
+			values (bolet, nalumno, apate, amate, fech, gen, cur, street, col,
+			codigo, tel, mail, prom, skulproce, alcal, opescom, hor);
         
-        set ocupa = (select Ocupados from Horario where idHorario = hor);
-        set dispo = dispo - 1;
-        set ocupa = ocupa + 1;
+			set ocupa = (select Ocupados from Horario where idHorario = hor);
+			set dispo = dispo - 1;
+			set ocupa = ocupa + 1;
         
-        update Horario set Disponibles = dispo, Ocupados = ocupa where idHorario = hor; 
-        LEAVE my_loop;
-	else
-		if(hor < numhorarios) then
-			set hor = hor +1;
+			update Horario set Disponibles = dispo, Ocupados = ocupa where idHorario = hor; 
+			set msj = "Usuario registrado, bienvenido a ESCOM";
+            LEAVE my_loop;
+		else
+			if(hor < numhorarios) then
+				set hor = hor +1;
+			end if;
 		end if;
-	end if;
-    END LOOP my_loop;
-    
+		END LOOP my_loop;
+    else
+		set msj = "Boleta o correo o CURP ya registrado";
+    end if;
+    select msj;
 end; |
 delimiter ;
 
@@ -327,5 +333,10 @@ begin
 end; |
 delimiter ;
 
-insert into Administradores(NombreAdmin, CorreoAdmin, ContraseñaAdmin) values ("Caleb", "caleb@caleb.com", "si");
-call spIniciarSesion("caleb@caleb.co", "si");
+call spGuardarAlumno("PE2", "caleb", "ca", "leb", "15/12/21", "masculino", 
+"5454de", "calle", "colonia", 56130, "594526", "correo@correo", "12.2",
+"escuela", "alcaldia", 5);
+
+call spGuardarAlumno("PE24", "caleb", "ca", "leb", "15/12/21", "masculino", 
+"5454des", "calle", "colonia", 56130, "594526", "coo", "12.2",
+"escuela", "alcaldia", 5);
