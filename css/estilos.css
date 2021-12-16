@@ -24,6 +24,10 @@ hr {
     color: #106eea;
 }
 
+.color-negro {
+    color: black;
+}
+
 #dvtext {
     display: none;
 }
