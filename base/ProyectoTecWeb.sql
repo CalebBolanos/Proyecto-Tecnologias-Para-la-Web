@@ -77,6 +77,7 @@ CREATE TABLE Alumno
   Promedio float(10) NOT NULL,
   EscuelaProcedencia varchar(500) NOT NULL,
   Alcaldia varchar(500) NOT NULL,
+  Estado varchar(500) NOT NULL,
   OpcionEscom INT NOT NULL,
   idHorario INT NOT NULL,
   PRIMARY KEY (idAlumno),
@@ -276,7 +277,7 @@ create procedure spGuardarAlumno(in bolet varchar(10), nalumno varchar(50),
 	apate varchar(100), amate varchar(100), fech date, gen varchar(50), 
 	cur varchar(100), street nvarchar(500), col nvarchar(500), codigo int, 
     tel varchar(10), mail varchar(50), prom float(10), skulproce varchar(500),
-    alcal varchar(500), opescom int)
+    alcal varchar(500), esta varchar(500), opescom int)
 begin
 	declare dispo, numhorarios, hor, ocupa, existe int;
     declare msj nvarchar(200);
@@ -290,9 +291,9 @@ begin
 		if(dispo > 0) then
 			insert into Alumno(Boleta, NombreAlumno, ApellidoPaterno, ApellidoMaterno,
 			FechaNacimiento, Genero, CURP, Calle, Colonia, CP, Telefono, Correo, 
-			Promedio, EscuelaProcedencia, Alcaldia, OpcionEscom, idHorario)
+			Promedio, EscuelaProcedencia, Alcaldia, Estado, OpcionEscom, idHorario)
 			values (bolet, nalumno, apate, amate, fech, gen, cur, street, col,
-			codigo, tel, mail, prom, skulproce, alcal, opescom, hor);
+			codigo, tel, mail, prom, skulproce, alcal, esta, opescom, hor);
         
 			set ocupa = (select Ocupados from Horario where idHorario = hor);
 			set dispo = dispo - 1;
@@ -333,10 +334,12 @@ begin
 end; |
 delimiter ;
 
-call spGuardarAlumno("PE2", "caleb", "ca", "leb", "15/12/21", "masculino", 
+call spGuardarAlumno('PE2', "caleb", "ca", "leb", "15/12/21", "masculino", 
 "5454de", "calle", "colonia", 56130, "594526", "correo@correo", "12.2",
-"escuela", "alcaldia", 5);
+"escuela", "alcaldia", "estado1", 5);
 
-call spGuardarAlumno("PE24", "caleb", "ca", "leb", "15/12/21", "masculino", 
+call spGuardarAlumno ("PE24", "caleb", "ca", "leb", "15/12/21", "masculino", 
 "5454des", "calle", "colonia", 56130, "594526", "coo", "12.2",
-"escuela", "alcaldia", 5);
+"escuela", "alcaldia", "estado", 5);
+
+select * from Alumno;
