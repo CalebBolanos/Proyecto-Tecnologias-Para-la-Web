@@ -1,4 +1,5 @@
 <?php
+require_once '../base/DbConexion.php';
 session_start();
 
 if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESSION['correo'])) {
@@ -15,7 +16,7 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Inicio</title>
+    <title>CRUD de alumnos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -43,10 +44,10 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link" aria-current="page" href="inicio.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="crudAlumnos.php">CRUD Alumnos</a>
+                            <a class="nav-link active" href="#">CRUD Alumnos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Configuración</a>
@@ -72,41 +73,42 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
         </nav>
         <main class="container">
             <div class="row">
-                <div class="col-12 pt-3">
-                    <h2 class="pb-2 border-bottom">Opciones disponibles</h2>
+            <div class="col-12 pt-3">
+                    <h2 class="pb-2 border-bottom">Lista de todos los alumnos registrados</h2>
                 </div>
-
-                <div class="col-lg-4 pt-3">
-                    <a href="crudAlumnos.php">
-                        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 tarjeta p-0"
-                            style="background-image: url('https://cdn.forbes.com.mx/2019/07/ipn-examen-jovenes-3-640x360.jpg');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">CRUD de alumnos</h2>
-                            </div>
-                        </div>
-                    </a>
+                <div class="col-md-12 pt-3">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Boleta</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $conexionBase = new DbConexion();
+                            $resultado = mysqli_query($conexionBase->getdbconnect(), 'select * from Alumno;');
+                            if ($resultado->num_rows > 0) {
+                                while ($fila = $resultado->fetch_assoc()) {
+                                    echo '
+                                    <tr>
+                                        <th scope="row"><a href="verDatosAlumno.php?id='.$fila['idAlumno'].'" class="btn btn-outline-primary">'.$fila['idAlumno'].'</a></th>
+                                        <td>'.$fila['Boleta'].'</td>
+                                        <td>'.$fila['NombreAlumno'].' '.$fila['ApellidoPaterno'].' '.$fila['ApellidoMaterno'].'</td>
+                                        <td>'.$fila['Correo'].'</td>
+                                        <td><a href="editarAlumno.php?id='.$fila['idAlumno'].'" class="btn btn-outline-success">Editar</a></td>
+                                        <td><a href="eliminarAlumno.php?id='.$fila['idAlumno'].'" class="btn btn-outline-danger">Eliminar</a></td>
+                                    </tr>';
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-lg-4 pt-3">
-                    <a href="#">
-                        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 tarjeta p-0"
-                            style="background-image: url('https://www.meritize.com/wp-content/uploads/2021/03/Network.jpg');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">Agregar Administrador</h2>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 pt-3">
-                    <a href="#">
-                        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 tarjeta p-0"
-                            style="background-image: url('https://weblog.west-wind.com/images/2016/Strongly%20Typed%20Configuration%20Settings%20in%20ASP.NET%20Core/GearsAndConfiguration.jpg');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">Configuración de cuenta</h2>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
 
             </div>
 
