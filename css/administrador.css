@@ -1,0 +1,14 @@
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+.blur {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: saturate(180%) blur(20px) !important;
+}
+
+.dropdown-menu.show {
+    position: absolute;
+    left: -85px;
+}

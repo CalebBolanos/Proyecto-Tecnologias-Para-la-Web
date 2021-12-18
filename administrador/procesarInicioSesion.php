@@ -18,10 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $_SESSION['idAdmin'] = $fila['idAdmin'];
                     $_SESSION['nombre'] = $fila['NombreAdmin'];
                     $_SESSION['correo'] = $fila['CorreoAdmin'];
-
+                    /*
                     echo $_SESSION['idAdmin'];
                     echo $_SESSION['nombre'];
-                    echo $_SESSION['correo'];
+                    echo $_SESSION['correo'];*/
+
+                    header('Location: inicio.php');
+                    exit();
                 }
             } else {
                 session_unset();
