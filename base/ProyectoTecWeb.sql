@@ -55,7 +55,7 @@ CREATE TABLE Administradores
   idAdmin INT AUTO_INCREMENT,
   NombreAdmin varchar(50) NOT NULL,
   CorreoAdmin varchar(50) NOT NULL,
-  ContraseñaAdmin varchar(50) NOT NULL,
+  ContrasenaAdmin varchar(500) NOT NULL,
   PRIMARY KEY (idAdmin)
 );
 
@@ -270,6 +270,48 @@ select * from Laboratorio;
 select * from Horario;
 
 
+/*Procedimiento (Procedure) para guardar Administrador*/
+drop procedure if exists spGuardarAdmin;
+delimiter |
+create procedure spGuardarAdmin(in nombre nvarchar(50), in correo nvarchar(50), in contrasena nvarchar(500))
+begin
+	declare existe int;
+    declare msj nvarchar(200);
+    
+    set existe = (select count(*) from Administradores where correo = CorreoAdmin);
+    if(existe = 1) then
+        set msj = "El correo que deseas usar esta ocupado";
+    else
+		insert into Administradores(NombreAdmin, CorreoAdmin, ContrasenaAdmin) values(nombre, correo, md5(contrasena));
+        set msj = "ok";
+	end if;
+    select msj;
+end; |
+delimiter ;
+
+call spGuardarAdmin("Caleb Bolaños", "bolanos.c@hotmail.com", "1234");
+
+/*Procedimiento (Procedure) para el INICIO DE SESION*/
+drop procedure if exists spIniciarSesion;
+delimiter |
+create procedure spIniciarSesion(in usr varchar(50), contra nvarchar(500))
+begin
+	declare idUsr, existe int;
+    declare msj nvarchar(200);
+    
+    set existe = (select count(*) from Administradores where CorreoAdmin = usr and ContrasenaAdmin = md5(contra));
+    if(existe = 1) then
+		select idAdmin into idUsr from Administradores where CorreoAdmin = usr;
+        set msj = "ok";
+    else
+		set msj = "Usuario o contraseña incorrecta";
+	end if;
+    select msj, idUsr;
+end; |
+delimiter ;
+
+call spIniciarSesion("bolanos.c@hotmail.com", "1234");
+
 /*Procedimiento (Procedure) para guardar Alumnos*/
 drop procedure if exists spGuardarAlumno;
 delimiter |
@@ -315,24 +357,6 @@ begin
 end; |
 delimiter ;
 
-/*Procedimiento (Procedure) para el INICIO DE SESION*/
-drop procedure if exists spIniciarSesion;
-delimiter |
-create procedure spIniciarSesion(in usr varchar(50), contra nvarchar(50))
-begin
-	declare idUsr, existe int;
-    declare msj nvarchar(200);
-    
-    set existe = (select count(*) from Administradores where CorreoAdmin = usr and ContraseñaAdmin = contra);
-    if(existe = 1) then
-		select idAdmin into idUsr from Administradores where CorreoAdmin = usr;
-        set msj = "ok";
-    else
-		set msj = "Usuario o contraseña incorrecta";
-	end if;
-    select msj, idUsr;
-end; |
-delimiter ;
 
 call spGuardarAlumno('PE2', "caleb", "ca", "leb", "15/12/21", "masculino", 
 "5454de", "calle", "colonia", 56130, "594526", "correo@correo", "12.2",
@@ -343,3 +367,8 @@ call spGuardarAlumno ("PE24", "caleb", "ca", "leb", "15/12/21", "masculino",
 "escuela", "alcaldia", "estado", 5);
 
 select * from Alumno;
+
+show tables;
+
+select * from Administradores;
+
