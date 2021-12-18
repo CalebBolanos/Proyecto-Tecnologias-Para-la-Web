@@ -55,12 +55,12 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                     <div class="dropdown text-end ">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://icons.deanishe.net/static/icons/material/444444/account-circle-256.png" alt="mdo" width="32" height="32"
-                                class="rounded-circle">
+                            <img src="https://icons.deanishe.net/static/icons/material/444444/account-circle-256.png"
+                                alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
 
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><?php echo $_SESSION['nombre']; ?></a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -72,66 +72,14 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
         </nav>
         <main class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card p-0 tarjeta">
-                        <div class="card-body mt-2">
-                            <ul>
-                                <!-- completar con php-->
-                                <li class="color-azul"><strong class="color-azul">Fecha: </strong><span
-                                        class="color-negro">Si</span></li>
-                                <li class="color-azul"><strong class="color-azul">Hora: </strong><span
-                                        class="color-negro">Si</span></li>
-                                <li class="color-azul"><strong class="color-azul">Laboratorio: </strong><span
-                                        class="color-negro">Si</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 pt-3 ">
-                    <p class="text-muted">Te mandamos un PDF con tu horario a tu correo electronico, pero si lo deseas,
-                        puedes visualizarlo dando clic en <strong>"Generar PDF"</strong></p>
-                </div>
-                <div class="col-md-12 pt-3 text-center">
-                    <button type="button" class="btn btn-primary">Generar PDF</button>
-                    <a class="btn btn-outline-primary" href="#" role="button">Regresar a la pagina principal</a>
+                <div class="col-md-12 pt-3">
+
                 </div>
 
             </div>
 
 
         </main>
-
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                <div class="col-12 col-md">
-                    <img src="img/ipn.png" height="64" class="lineaDerecha">
-                    <img src="img/escom.png" height="64">
-                    <small class="d-block pt-3 text-muted">&copy; 2021 - ESCOM IPN</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Integrantes del equipo 6</h5>
-                    <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a>
-                        </li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Acerca de</h5>
-                    <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tecnologías para la
-                                web</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">2CM12</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Proyecto Final:
-                                Registro de datos generales para alumnos de nuevo ingreso (enero 2021)</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-
-
 
     </div>
 
