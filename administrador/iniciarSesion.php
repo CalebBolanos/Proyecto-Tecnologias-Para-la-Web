@@ -17,19 +17,19 @@
     
     <main class="form-signin">
       <div class="tarjeta p-5">
-      <form>
+      <form method="POST" action="procesarInicioSesion.php">
         
         <img src="../img/ipn.png" height="57" class="lineaDerecha">
         <img src="../img/escom.png" height="57">
         <h1 class="h3 my-3 fw-normal">Iniciar Sesión como Administrador</h1>
     
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Usuario</label>
+          <input type="email" class="form-control" id="usuario" name="usuario" placeholder="name@example.com" >
+          <label for="usuario">Usuario</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Contraseña</label>
+          <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Password" >
+          <label for="contrasena">Contraseña</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Iniciar Sesión</button>
         <p class="mt-5 mb-3 text-muted">Equipo 6 - Proyecto tecnologías para la web</p>
