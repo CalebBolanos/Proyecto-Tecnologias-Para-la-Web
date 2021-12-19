@@ -43,13 +43,13 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
+                            <a class="nav-link" aria-current="page" href="inicio.php">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="crudAlumnos.php">CRUD Alumnos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Configuración</a>
+                            <a class="nav-link active" href="#">Configuración</a>
                         </li>
                     </ul>
                     <div class="dropdown text-end ">

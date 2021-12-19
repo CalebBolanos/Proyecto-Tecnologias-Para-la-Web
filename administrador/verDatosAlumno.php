@@ -92,7 +92,7 @@ if ($resultado->num_rows > 0) {
                             <a class="nav-link active" href="crudAlumnos.php">CRUD Alumnos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Configuración</a>
+                            <a class="nav-link" href="configuracion.php">Configuración</a>
                         </li>
                     </ul>
                     <div class="dropdown text-end ">
@@ -107,7 +107,7 @@ if ($resultado->num_rows > 0) {
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Configuración</a></li>
+                            <li><a class="dropdown-item" href="configuracion.php">Configuración</a></li>
                             <li><a class="dropdown-item" href="cerrarSesion.php">Cerrar Sesión</a></li>
                         </ul>
                     </div>
