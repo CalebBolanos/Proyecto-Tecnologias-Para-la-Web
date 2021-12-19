@@ -40,15 +40,15 @@ function calcularEdad(fecha_nacimiento) {
     return edad;
 }
 
-const validarFormulario = (e) => {
+const validarFormulario = (input) => {
     //Validacion de otro en cecyts
     if (document.getElementById("chkYes").checked) {
         campos.otro = true;
     }
     if (campos.otro) {
-        switch (e.target.id) {
+        switch (input.id) {
             case "escuelaProcedencia":
-                if (expresiones.nombre.test(e.target.value)) {
+                if (expresiones.nombre.test(input.value)) {
                     campos.campootro = true;
                 } else {
                     campos.campootro = false;
@@ -58,86 +58,86 @@ const validarFormulario = (e) => {
     }
 
     //validacion de los demas campos
-    switch (e.target.id) {
+    switch (input.id) {
         case "boleta":
-            if (expresiones.boleta.test(e.target.value)) {
+            if (expresiones.boleta.test(input.value)) {
                 campos.boleta = true;
             } else {
                 campos.boleta = false;
             }
             break;
         case "nombre":
-            if (expresiones.nombre.test(e.target.value)) {
+            if (expresiones.nombre.test(input.value)) {
                 campos.nombre = true;
             } else {
                 campos.nombre = false;
             }
             break;
         case "apellidop":
-            if (expresiones.nombre.test(e.target.value)) {
+            if (expresiones.nombre.test(input.value)) {
                 campos.apellidop = true;
             } else {
                 campos.apellidop = false;
             }
             break;
         case "apellidom":
-            if (expresiones.nombre.test(e.target.value)) {
+            if (expresiones.nombre.test(input.value)) {
                 campos.apellidom = true;
             } else {
                 campos.apellidom = false;
             }
             break;
         case "curp":
-            if (expresiones.curp.test(e.target.value)) {
+            if (expresiones.curp.test(input.value)) {
                 campos.curp = true;
             } else {
                 campos.curp = false;
             }
             break;
         case "calleNumero":
-            if (expresiones.calle.test(e.target.value)) {
+            if (expresiones.calle.test(input.value)) {
                 campos.calleNumero = true;
             } else {
                 campos.calleNumero = false;
             }
             break;
         case "colonia":
-            if (expresiones.calle.test(e.target.value)) {
+            if (expresiones.calle.test(input.value)) {
                 campos.colonia = true;
             } else {
                 campos.colonia = false;
             }
             break;
         case "cp":
-            if (expresiones.cp.test(e.target.value)) {
+            if (expresiones.cp.test(input.value)) {
                 campos.cp = true;
             } else {
                 campos.cp = false;
             }
             break;
         case "telefono":
-            if (expresiones.telefono.test(e.target.value)) {
+            if (expresiones.telefono.test(input.value)) {
                 campos.telefono = true;
             } else {
                 campos.telefono = false;
             }
             break;
         case "mail":
-            if (expresiones.correo.test(e.target.value)) {
+            if (expresiones.correo.test(input.value)) {
                 campos.mail = true;
             } else {
                 campos.mail = false;
             }
             break;
         case "promedio":
-            if (expresiones.promedio.test(e.target.value)) {
+            if (expresiones.promedio.test(input.value)) {
                 campos.promedio = true;
             } else {
                 campos.promedio = false;
             }
             break;
         case "fecha":
-            var edad = calcularEdad(e.target.value);
+            var edad = calcularEdad(input.value);
             if (edad >= 9) {
                 campos.fecha = true;
             } else {
@@ -147,12 +147,12 @@ const validarFormulario = (e) => {
     }
 };
 
-inputs.forEach((input) => {
-    input.addEventListener("keyup", validarFormulario);
-    input.addEventListener("blur", validarFormulario);
-});
 
 formulario.addEventListener("submit", (e) => {
+    inputs.forEach((input) => {
+        validarFormulario(input);
+    });
+
     //e.preventDefault();
     /*Impresiones para guiarse en las validaciones
       console.log("boleta"+campos.boleta);
@@ -201,5 +201,6 @@ formulario.addEventListener("submit", (e) => {
         alert("Favor de verificar");
     }
     e.preventDefault();
+    console.log(campos);
     formulario.classList.add("was-validated");
 });

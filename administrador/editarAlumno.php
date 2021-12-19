@@ -66,7 +66,7 @@ if ($resultado->num_rows > 0) {
     </script>
     <link href="../css/estilos.css" rel="stylesheet">
     <link href="../css/administrador.css" rel="stylesheet">
-    <!--  <script src="js/verificarDatos.js"></script> -->
+    <script src="../js/index.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 
@@ -511,7 +511,7 @@ if ($resultado->num_rows > 0) {
                         </div>
 
                     </form>
-                    <!-- <script src="../js/index.js"></script> -->
+                    
                 </div>
 
             </div>
