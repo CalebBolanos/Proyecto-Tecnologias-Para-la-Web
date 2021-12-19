@@ -501,6 +501,7 @@ if ($resultado->num_rows > 0) {
                                 </div>
                             </div>
                             <div class="col-md-8">
+                                <input id="idAlumno" name="idAlumno" type="hidden" value="<?php echo $idAlumno; ?>">
                                 <button type="submit" class="btn btn-primary" >Actualizar datos</button>
                             </div>
                             <div class="col-md-4 d-md-flex justify-content-md-end">
@@ -510,7 +511,7 @@ if ($resultado->num_rows > 0) {
                         </div>
 
                     </form>
-                    <script src="../js/index.js"></script>
+                    <!-- <script src="../js/index.js"></script> -->
                 </div>
 
             </div>

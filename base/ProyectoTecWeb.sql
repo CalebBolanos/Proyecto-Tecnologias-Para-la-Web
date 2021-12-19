@@ -366,9 +366,9 @@ call spGuardarAlumno ("PE24", "caleb", "ca", "leb", "15/12/21", "masculino",
 "5454des", "calle", "colonia", 56130, "594526", "coo", "12.2",
 "escuela", "alcaldia", "estado", 5);
 
-select * from Alumno;
+select * from Alumno where idAlumno = 1;
 
 show tables;
 
-select * from Administradores;
+select * from Administradores where idAdmin = 1;
 

@@ -11,6 +11,7 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $idAlumno = $_POST['idAlumno'];
     $boleta = $_POST['boleta'];
     $nombre = $_POST['nombre'];
     $apellidop = $_POST['apellidop'];
@@ -30,57 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $promedio = $_POST['promedio'];
     $opcion = $_POST['opcion'];
 
-    $identidad = [
-        'Boleta' => $boleta,
-        'Nombre' => $nombre,
-        'Apellido Paterno' => $apellidop,
-        'Apellido Materno' => $apellidom,
-        'Fecha de Nacimineto' => $fecha,
-        'Genero' => $genero,
-        'CURP' => $curp,
-    ];
-
-    $contacto = [
-        'Calle y numero' => $calleNumero,
-        'Colonia' => $colonia,
-        'Alcaldia' => $alcaldia,
-        'Codigo Postal' => $cp,
-        'Telefono' => $telefono,
-        'Correo' => $mail,
-    ];
-
-    //a partir de aqui hacer conexion a la base de datos y actualizar datos de alumno
-
-    if ($escuelaP == 'on') {
-        $procedencia = [
-            'Escuela de Procedencia' => $escuelaProcedencia,
-            'Entidad Federativa' => $estado,
-            'Promedio' => $promedio,
-            'ESCOM fue tu opcion' => $opcion,
-        ];
+    $conexionBase = new DbConexion();
+    if ($resultado = mysqli_query($conexionBase->getdbconnect(), 'update Alumno set Boleta = "'.$boleta.'",  NombreAlumno="'.$nombre.'", ApellidoPaterno="'.$apellidop.'", ApellidoMaterno="'.$apellidom.'",  FechaNacimiento="'.$fecha.'", Genero="'.$genero.'", CURP="'.$curp.'", Calle="'.$calleNumero.'", Colonia="'.$colonia.'", CP = '.$cp.', Telefono = '.$telefono.', Correo = "'.$mail.'", Promedio = '.$promedio.', EscuelaProcedencia = "'.$escuelaP.'", Alcaldia = "'.$alcaldia.'", Estado = "'.$estado.'", OpcionEscom = '.$opcion.' where idAlumno = '.$idAlumno.';')) {
+        header('Location: crudAlumnos.php?msj=ok');
     } else {
-        $procedencia = [
-            'Escuela de Procedencia' => $escuelaP,
-            'Entidad Federativa' => $estado,
-            'Promedio' => $promedio,
-            'ESCOM fue tu opcion' => $opcion,
-        ];
-    }
-
-    foreach ($identidad as $key => $value) {
-        echo "$key : $value <br>";
-    }
-
-    echo '<br>';
-
-    foreach ($contacto as $llave => $valor) {
-        echo "$llave : $valor <br>";
-    }
-
-    echo '<br>';
-
-    foreach ($procedencia as $clave => $atributos) {
-        echo "$clave : $atributos <br>";
+        header('Location: crudAlumnos.php?msj=error');
     }
 } else {
     header('Location: crudAlumnos.php');
