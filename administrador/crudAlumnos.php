@@ -73,10 +73,13 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
         </nav>
         <main class="container">
             <div class="row">
-            <div class="col-12 pt-3">
-                    <h2 class="pb-2 border-bottom">Lista de todos los alumnos registrados</h2>
+                <div class="col-md-10 pt-3">
+                    <h2 class="pb-2 ">Lista de todos los alumnos registrados</h2>
                 </div>
-                <div class="col-md-12 pt-3">
+                <div class="col-md-2 pt-3 d-grid p-3">
+                    <a href="agregarAlumno.php" class="btn btn-primary">Agregar alumno</a>
+                </div>
+                <div class="col-md-12 pt-3 border-top">
                     <table class="table ">
                         <thead>
                             <tr>
