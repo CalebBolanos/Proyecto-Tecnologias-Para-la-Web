@@ -49,7 +49,7 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                             <a class="nav-link" href="crudAlumnos.php">CRUD Alumnos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Configuración</a>
+                            <a class="nav-link" href="configuracion.php">Configuración</a>
                         </li>
                     </ul>
                     <div class="dropdown text-end ">
@@ -64,7 +64,7 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Configuración</a></li>
+                            <li><a class="dropdown-item" href="configuracion.php">Configuración</a></li>
                             <li><a class="dropdown-item" href="cerrarSesion.php">Cerrar Sesión</a></li>
                         </ul>
                     </div>
@@ -87,7 +87,7 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                     </a>
                 </div>
                 <div class="col-lg-4 pt-3">
-                    <a href="#">
+                    <a href="configuracion.php#agregarAdmin">
                         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 tarjeta p-0"
                             style="background-image: url('https://www.meritize.com/wp-content/uploads/2021/03/Network.jpg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -97,7 +97,7 @@ if (!isset($_SESSION['idAdmin']) || !isset($_SESSION['nombre']) || !isset($_SESS
                     </a>
                 </div>
                 <div class="col-lg-4 pt-3">
-                    <a href="#">
+                    <a href="configuracion.php">
                         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 tarjeta p-0"
                             style="background-image: url('https://weblog.west-wind.com/images/2016/Strongly%20Typed%20Configuration%20Settings%20in%20ASP.NET%20Core/GearsAndConfiguration.jpg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
