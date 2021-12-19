@@ -321,7 +321,7 @@ create procedure spGuardarAlumno(in bolet varchar(10), nalumno varchar(50),
     tel varchar(10), mail varchar(50), prom float(10), skulproce varchar(500),
     alcal varchar(500), esta varchar(500), opescom int)
 begin
-	declare dispo, numhorarios, hor, ocupa, existe int;
+	declare dispo, numhorarios, hor, ocupa, existe, idA, idH int;
     declare msj nvarchar(200);
     set hor = 1;
     set numhorarios = (select count(*) from Horario);
@@ -343,6 +343,8 @@ begin
         
 			update Horario set Disponibles = dispo, Ocupados = ocupa where idHorario = hor; 
 			set msj = "Usuario registrado, bienvenido a ESCOM";
+            set idA = (select idAlumno from Alumno where Boleta = bolet);
+            set idH = hor;
             LEAVE my_loop;
 		else
 			if(hor < numhorarios) then
@@ -353,7 +355,7 @@ begin
     else
 		set msj = "Boleta o correo o CURP ya registrado";
     end if;
-    select msj;
+    select msj, idA, idH;
 end; |
 delimiter ;
 
@@ -387,20 +389,15 @@ delimiter ;
 
 
 
-call spGuardarAlumno('PE2', "caleb", "ca", "leb", "15/12/21", "masculino", 
-"5454de", "calle", "colonia", 56130, "594526", "correo@correo", "12.2",
-"escuela", "alcaldia", "estado1", 5);
-
-call spGuardarAlumno ("PE24", "caleb", "ca", "leb", "15/12/21", "masculino", 
-"5454des", "calle", "colonia", 56130, "594526", "coo", "12.2",
-"escuela", "alcaldia", "estado", 5);
+call spGuardarAlumno('2016090069', 'Edgar', 'Garcia', 'Marciano', '2001-11-18', 'Masculino', 'RAEA650720MDFMSN04', 'Calle', 'Colonia', 12345, '5526836200', 'edgar@hotmail.com', '9.5', 'CECyT 12', 'Venustiano Carranza', 'Chiapas', 1);
 
 select * from Alumno where idAlumno = 1;
 
 show tables;
 
-select * from Administradores where idAdmin = 1;
 
-select * from Alumno;
-select * from Horario;
--- call spEliminarAlumno(3);
+drop view if exists viewHorario;
+create view viewHorario as select h.idHorario, h.HoraInicio as "horaInicio", h.HoraFin as "horaFin", h.Dia as "dia", l.NombreLab as "laboratorio", l.Edificio as "edificio", l.Piso as "piso"  from Horario h, Laboratorio l  where h.idLab = l.idLab order by idHorario;
+select * from viewHorario where idHorario = 1;
+
+

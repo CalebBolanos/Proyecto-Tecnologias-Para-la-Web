@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
     }
 } else {
-    header('Location: index.php.?msj=Llena todos los datos del formulario');
+    header('Location: index.php?msj=Llena todos los datos del formulario');
     exit();
 }
 ?>
