@@ -357,6 +357,33 @@ begin
 end; |
 delimiter ;
 
+/*Procedimiento (Procedure) para el eliminar alumno*/
+drop procedure if exists spEliminarAlumno;
+delimiter |
+create procedure spEliminarAlumno(in bol varchar(50))
+begin
+	declare horario, dispo, ocupa, existe int;
+    declare msj nvarchar(200);
+    
+    set existe = (select count(*) from Alumno where Boleta = bol);
+    if(existe = 1) then
+		set horario = (select idHorario from Alumno where Boleta = bol);
+		set ocupa = (select Ocupados from Horario where idHorario = horario);
+		set dispo = (select Disponibles from Horario where idHorario = horario);
+    
+		set dispo = dispo + 1;
+		set ocupa = ocupa - 1;
+    
+		update Horario set Disponibles = dispo, Ocupados = ocupa where idHorario = horario;
+		delete from Alumno where Boleta = bol;
+		set msj = "Alumno eliminado con exito";
+    else
+		set msj = "Alumno no encontrado, verifique la boleta";
+    end if;
+    select msj;
+    
+end; |
+delimiter ;
 
 call spGuardarAlumno('PE2', "caleb", "ca", "leb", "15/12/21", "masculino", 
 "5454de", "calle", "colonia", 56130, "594526", "correo@correo", "12.2",
