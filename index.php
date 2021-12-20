@@ -514,7 +514,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Bolaños Ramos Caleb Salomón</a></li>
                         <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">García Marciano Edgar</a></li>
                         <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Hernádez Oble Axel</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">¿Compañero?</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Garduño Salazar Josué Judá*</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">

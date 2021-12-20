@@ -199,21 +199,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-6 col-md">
                     <h5>Integrantes del equipo 6</h5>
                     <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a>
-                        </li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Bolaños Ramos Caleb Salomón</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">García Marciano Edgar</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Hernádez Oble Axel</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Garduño Salazar Josué Judá*</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Acerca de</h5>
                     <ul class="list-unstyled text-small">
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tecnologías para la
-                                web</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tecnologías para la web</a></li>
                         <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">2CM12</a></li>
-                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Proyecto Final:
-                                Registro de datos generales para alumnos de nuevo ingreso (enero 2021)</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Proyecto Final: Registro de datos generales para alumnos de nuevo ingreso (enero 2021)</a></li>
                     </ul>
                 </div>
             </div>
