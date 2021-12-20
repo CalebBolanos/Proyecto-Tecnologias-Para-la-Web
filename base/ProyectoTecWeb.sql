@@ -312,6 +312,31 @@ delimiter ;
 
 call spIniciarSesion("bolanos.c@hotmail.com", "1234");
 
+/*Procedimiento (Procedure) para cambiar contrasena*/
+drop procedure if exists spCambiarContrasena;
+delimiter |
+create procedure spCambiarContrasena(in id int, in antigua nvarchar(500), in nueva nvarchar(500))
+begin
+	declare idUsr, existe int;
+    declare msj nvarchar(200);
+    
+    set existe = (select count(*) from Administradores where idAdmin = id);
+    if(existe = 1) then
+		if(md5(antigua) = (select ContrasenaAdmin from Administradores where idAdmin = id))then
+			update Administradores set ContrasenaAdmin = md5(nueva) where idAdmin = id;
+			set msj="ok";
+		else 
+			set msj="contrasena incorrecta";
+		end if;
+    else
+		set msj = "admin no registrado";
+	end if;
+    select msj, idUsr;
+end; |
+delimiter ;
+
+-- call spCambiarContrasena(1, 'si', '1234');
+
 /*Procedimiento (Procedure) para guardar Alumnos*/
 drop procedure if exists spGuardarAlumno;
 delimiter |
@@ -399,5 +424,7 @@ show tables;
 drop view if exists viewHorario;
 create view viewHorario as select h.idHorario, h.HoraInicio as "horaInicio", h.HoraFin as "horaFin", h.Dia as "dia", l.NombreLab as "laboratorio", l.Edificio as "edificio", l.Piso as "piso"  from Horario h, Laboratorio l  where h.idLab = l.idLab order by idHorario;
 select * from viewHorario where idHorario = 1;
+
+select * from Administradores;
 
 
