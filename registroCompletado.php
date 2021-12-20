@@ -1,6 +1,9 @@
 <?php
 
 require_once 'base/DbConexion.php';
+include("./fpdf182/fpdf.php");
+include("./phpMailer/class.phpmailer.php");
+include("./phpMailer/class.smtp.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $boleta = $_POST['Boleta'];
     $nombre = $_POST['Nombre'];
@@ -26,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'Nombre' => $nombre,
         'Apellido Paterno' => $apellidop,
         'Apellido Materno' => $apellidom,
-        'Fecha de Nacimineto' => $fecha,
+        'Fecha de Nacimiento' => $fecha,
         'Genero' => $genero,
         'CURP' => $curp,
     ];
@@ -94,6 +97,99 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'Piso' => $filaHorario['piso'],
             ];
         }
+        class PDF extends FPDF
+        {
+        // Cabecera de página
+            function Header()
+            {
+            // Logo
+                $this->Image('./img/escom.png',170,8,30);
+                $this->Image('./img/ipn.png',10,8,30);
+                $this->SetFont('Arial','B',24);
+                $this->Cell(190,25,'Examen diagnostico',0,0,'C');
+                $this->Ln(20);
+            }
+
+            // Pie de página
+            function Footer()
+            {       
+            // Posición: a 1,5 cm del final
+                $this->SetY(-15);
+            // Arial italic 8
+                $this->SetFont('Arial','I',8);
+            // Número de página
+                $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'I');
+            }
+        }
+
+        $pdf = new PDF();
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetFont('Helvetica','',12);
+
+        $pdf->Cell(190,10,"",0,2,'C');
+        $pdf->Cell(190,5,"Datos del alumno",0,2,'L');
+        $pdf->Cell(190,10,"",0,2,'C');
+        $pdf->Cell(190,5,"Boleta:$boleta",0,2,'L');
+        $pdf->Cell(190,5,"Nombre:".$identidad["Nombre"],0,2,'L');
+        $pdf->Cell(190,5,"Apellido Paterno:".$identidad["Apellido Paterno"],0,2,'L');
+        $pdf->Cell(190,5,"Apellido Materno:".$identidad["Apellido Materno"],0,2,'L');
+        $pdf->Cell(190,5,"Fecha de nacimiento:".$identidad["Fecha de Nacimiento"],0,2,'L');
+        $pdf->Cell(190,5,"Genero:".$identidad["Genero"],0,2,'L');
+        $pdf->Cell(190,5,"CURP:".$identidad["CURP"],0,2,'L');
+        $pdf->Cell(190,5,"Calle:".$contacto["Calle y numero"],0,2,'L');
+        $pdf->Cell(190,5,"Colonia:".$contacto["Colonia"],0,2,'L');
+        $pdf->Cell(190,5,"CP:".$contacto["Codigo Postal"],0,2,'L');
+        $pdf->Cell(190,5,"Telefono:".$contacto["Telefono"],0,2,'L');
+        $pdf->Cell(190,5,"Correo:".$contacto["Correo"],0,2,'L');
+        $pdf->Cell(190,5,"Promedio:".$procedencia["Promedio"],0,2,'L');
+        $pdf->Cell(190,5,"Escuela de procedencia:".$procedencia["Escuela de Procedencia"],0,2,'L');
+        $pdf->Cell(190,5,"Alcaldía:".$contacto["Alcaldia"],0,2,'L');
+        $pdf->Cell(190,5,"Estado de procedencia:".$procedencia["Entidad Federativa"],0,2,'L');
+        $pdf->Cell(190,5,"ESCOM fue tu opción:".$procedencia["ESCOM fue tu opcion"],0,2,'L');
+
+        $pdf->Cell(190,10,"",0,2,'C');
+        $pdf->Cell(190,5,"Horario",0,2,'L');
+        $pdf->Cell(190,10,"",0,2,'C');
+        $pdf->Cell(190,5,"Hora de inicio:".$infoHorario["Hora de Inicio"],0,2,'L');
+        $pdf->Cell(190,5,"Hora de termino:".$infoHorario["Hora de Fin"],0,2,'L');
+        $pdf->Cell(190,5,"Día de la aplicación:".$infoHorario["Día de aplicación"],0,2,'L');
+        $pdf->Cell(190,5,"Laboratorio:".$infoHorario["Laboratorio"],0,2,'L');
+        $pdf->Cell(190,5,"Edificio:".$infoHorario["Edificio"],0,2,'L');
+        $pdf->Cell(190,5,"Piso:".$infoHorario["Piso"],0,2,'L');
+
+        //Envio del mail
+        $email_user = "pruebatecweb@gmail.com"; //OJO. Debes actualizar esta línea con tu información
+        $email_password = "PruebaTecWeb1"; //OJO. Debes actualizar esta línea con tu información
+        $the_subject = "Registro Nuevo Alumno ESCOM";
+        $address_to = $contacto['Correo']; //OJO. Debes actualizar esta línea con tu información
+        $from_name = "Equipo 6";
+        $phpmailer = new PHPMailer();
+        // ---------- datos de la cuenta de Gmail -------------------------------
+        $phpmailer->Username = $email_user;
+        $phpmailer->Password = $email_password; 
+        //-----------------------------------------------------------------------
+        // $phpmailer->SMTPDebug = 1;
+        $phpmailer->SMTPSecure = 'ssl';
+        $phpmailer->Host = "smtp.gmail.com"; // GMail
+        $phpmailer->Port = 465;
+        $phpmailer->IsSMTP(); // use SMTP
+        $phpmailer->SMTPAuth = true;
+
+        $phpmailer->setFrom($phpmailer->Username,$from_name);
+        $phpmailer->AddAddress($address_to); // recipients email
+
+        $phpmailer->Subject = $the_subject; 
+        $phpmailer->Body .="<h2 style='color:#3498db;'>Registro completado</h2><h1 style='color:#3498db;'>Bienvenido a ESCOM!!</h1>";
+        $phpmailer->Body .= "<p>Anexamos tus datos datos personales y el horario para presentar tu examen dentro del PDF</p>";
+        $phpmailer->Body .= "<p>En caso de perder el archivo, puedes obtenerlo en la plataforma, en el apartado de RecuperarPDF</p>";
+        $phpmailer->Body .= "<p>Fecha y Hora: ".date("d-m-Y h:i:s")."</p>";
+        $pdfdoc = $pdf->Output('', 'S');
+        $phpmailer->addStringAttachment($pdfdoc, 'RegistroESCOM.pdf');
+        $phpmailer->IsHTML(true);
+
+        $phpmailer->Send(); //Envio del mail
+
     } else {
         header('Location: index.php?msj='.$fila['msj'].'');
         exit();
@@ -102,6 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: index.php?msj=Llena todos los datos del formulario');
     exit();
 }
+
 ?>
 
 
