@@ -160,7 +160,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         puedes visualizarlo dando clic en <strong>"Generar PDF"</strong></p>
                 </div>
                 <div class="col-md-12 pt-3 text-center">
-                    <button type="button" class="btn btn-primary">Generar PDF</button>
+                    <form action="generarPDF.php" method="POST">
+                    <input Type="hidden" name="idAlumno" value="<?php echo $idAlumno;?>">
+                    <input Type="submit" class="btn btn-primary" value="Generar PDF"/>
+                    </form>
+                    
                     <a class="btn btn-outline-primary" href="index.php" role="button">Regresar a la pagina principal</a>
                 </div>
 
